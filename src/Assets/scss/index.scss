@@ -1,0 +1,15 @@
+#app div::-webkit-scrollbar {
+  width: 0.625rem;
+  background: #00000025;
+  padding: 1px;
+}
+
+#app div::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: var(--chakra-colors-primary-600);
+  transition: background-color 1s;
+
+  &:hover {
+    background-color: var(--chakra-colors-primary-500);
+  }
+}
