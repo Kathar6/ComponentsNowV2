@@ -51,11 +51,11 @@ const Home: FC = () => {
         Categories
       </Text>
       <TipList>
-        <Icon icon="eva:monitor-outline"/>
-        <Icon icon="bx:mouse"/>
-        <Icon icon="fe:keyboard"/>
-        <Icon icon="bi:gpu-card"/>
-        <Icon icon="fluent:ram-20-filled"/>
+        <Icon data-text="Displays" icon="eva:monitor-outline"/>
+        <Icon data-text="Mouses" icon="bx:mouse"/>
+        <Icon data-text="Keyboards" icon="fe:keyboard"/>
+        <Icon data-text="GPUS" icon="bi:gpu-card"/>
+        <Icon data-text="RAMS" icon="fluent:ram-20-filled"/>
       </TipList>
       <Text 
         my="2.5rem"
