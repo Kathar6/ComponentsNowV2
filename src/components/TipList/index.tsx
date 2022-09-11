@@ -1,4 +1,4 @@
-
+import { useState } from "react"
 
 // Components
 import Container from "./Container"
@@ -9,13 +9,21 @@ type Props = {
 }
 
 const TipList = (props: Props) => {
+  const [childrenHover, setChildrenHover] = useState(-1)
+
   return (
-    <Container>
+    <Container data-testid="tip-list">
       {Array.isArray(props.children) 
         ? (
           props.children.map((children, index) => {
             return (
-              <Tip key={`tip-${index}`}>{children}</Tip>
+              <Tip key={`tip-${index}`}
+              onMouseOver={() => setChildrenHover(index)}
+              onMouseOut={() => setChildrenHover(-1)}
+              >
+                {children}
+                {childrenHover === index && children.props['data-text'] && <span>{children.props['data-text']}</span>}
+              </Tip>
             )
           })
         ) : (
