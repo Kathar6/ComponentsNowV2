@@ -12,9 +12,8 @@ import facebook from "@src/Assets/imgs/icons/facebook-logo.png"
 import useValidations from "@src/hooks/useValidations"
 
 // Components
-import Layout from "@src/components/Layout"
 import CustomInput from "@src/components/Input"
-import ButtonGradient from "./ButtonGradient"
+import ButtonGradient from "@src/components/ButtonGradient"
 
 // Vendor
 import Container from "./Container"
@@ -59,36 +58,34 @@ const Login = (): JSX.Element | null => {
   }
 
   return (
-    <Layout type="blank">
-      <Container>
-        <Image src={logo} w="fit-content" h="5.625rem" alt="Components Logo"/>
-        <Text title="page-title" fontSize="2rem">Components Now</Text>
-        <Box w="100%">
-          <Formik 
-            initialValues={initialValues}
-            onSubmit={onSubmit}
-            validate={checkValues}
-            >
-            <Form>
-              <CustomInput name="name" label="Username" type="text" />
-              <CustomInput name="password" label="Password" type="password" />
-              <ButtonGradient 
-                variant="solid" 
-                type="submit">
-                Log in
-              </ButtonGradient>
-            </Form>
-          </Formik>
-          <Box mt="1rem" fontSize="0.875rem" fontWeight="bold">
-            Don't have an account? <Link color="var(--chakra-colors-primary-500)" onClick={() => navigate("/register")}>Register a new account</Link>
-          </Box>
-          <Box mt="1.875rem" display="flex" gap="1.25rem" justifyContent="center" alignItems="center">
-            <Image src={google} w="3rem" h="3rem"/>
-            <Image src={facebook} w="3rem" h="3rem"/>
-          </Box>
+    <Container>
+      <Image src={logo} w="fit-content" h="5.625rem" alt="Components Logo"/>
+      <Text title="page-title" fontSize="2rem">Components Now</Text>
+      <Box w="100%">
+        <Formik 
+          initialValues={initialValues}
+          onSubmit={onSubmit}
+          validate={checkValues}
+          >
+          <Form>
+            <CustomInput name="name" label="Username" type="text" />
+            <CustomInput name="password" label="Password" type="password" />
+            <ButtonGradient 
+              variant="solid" 
+              type="submit">
+              Log in
+            </ButtonGradient>
+          </Form>
+        </Formik>
+        <Box mt="1rem" fontSize="0.875rem" fontWeight="bold">
+          Don't have an account? <Link color="var(--chakra-colors-primary-500)" onClick={() => navigate("/register")}>Register a new account</Link>
         </Box>
-      </Container>
-    </Layout>
+        <Box mt="1.875rem" display="flex" gap="1.25rem" justifyContent="center" alignItems="center">
+          <Image src={google} w="3rem" h="3rem"/>
+          <Image src={facebook} w="3rem" h="3rem"/>
+        </Box>
+      </Box>
+    </Container>
   )
 }
 

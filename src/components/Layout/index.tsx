@@ -20,7 +20,7 @@ const Layout = (props: Props) => {
   } = props
 
   const layoutHandler: LayoutDict = {
-    blank: <Blank>{children || <div></div>}</Blank>,
+    blank: <Blank/>,
     menu: <Menu/>
   }
 

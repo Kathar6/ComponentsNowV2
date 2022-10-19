@@ -7,14 +7,22 @@ import type { RouteObject } from "react-router-dom";
 const Home = lazy(() => import("@views/Home"))
 const Layout = lazy(() => import("@src/components/Layout"))
 
+// Route Files
+import products from "./Products"
+
+const childRoutes: Array<RouteObject> = [
+  {
+    path: '',
+    element: <Home/>
+  },
+  ...products
+]
+
 const defaultRoutes: Array<RouteObject> = [
   {
     path: '',
     element: <Layout type="menu"/>,
-    children: [{
-      path: 'home',
-      element: <Home/>
-    }]
+    children: childRoutes
   }
 ];
 

@@ -8,6 +8,7 @@ import logo from "@src/Assets/imgs/Logo.png"
 
 // Components
 import Navbar from "./Navbar";
+import Footer from "./Footer"
 
 // Vendor
 import { Icon } from "@iconify/react"
@@ -63,7 +64,10 @@ const Menu = () => {
           </MenuList>
         </CAMenu>
       </Navbar>
-      <Outlet/>
+      <Box>
+        <Outlet/>
+        <Footer/>
+      </Box>
     </Box>
   )
 }

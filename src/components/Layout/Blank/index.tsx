@@ -1,19 +1,18 @@
 
-
+// Components
 import Container from "./Container"
 
+// Vendor
+import { Outlet } from "react-router-dom"
+
 type Props = {
-  children: JSX.Element
 }
 
 const Blank = (props: Props) => {
-  const {
-    children
-  } = props
 
   return (
     <Container>
-      {children}
+      <Outlet/>
     </Container>
   )
 }

@@ -1,3 +1,4 @@
+import { useState } from "react"
 import type { FC } from "react"
 
 // Router
@@ -13,6 +14,7 @@ import "./style.scss"
 
 // Components
 import TipList from "@src/components/TipList"
+import { List, Card } from "@src/components/ProductCardList"
 
 // Vendor
 import { Icon } from "@iconify/react"
@@ -24,8 +26,9 @@ import {
   Image
 } from "@chakra-ui/react"
 
-const Home: FC = () => {
-  const navigate = useNavigate()
+const Home = (): JSX.Element => {
+
+  const [cards, setCards] = useState(new Array(8).fill(""))
 
   return (
     <Box>
@@ -33,8 +36,7 @@ const Home: FC = () => {
         navigation
         slidesPerView={1}
         spaceBetween={20}
-        modules={[Navigation]}
-      >
+        modules={[Navigation]}>
         <SwiperSlide>
           <Image 
             src={background}
@@ -47,6 +49,7 @@ const Home: FC = () => {
       <Text 
         my="2.5rem"
         textAlign="center"
+        color="gray.700"
         fontSize="2.25rem">
         Categories
       </Text>
@@ -60,9 +63,27 @@ const Home: FC = () => {
       <Text 
         my="2.5rem"
         textAlign="center"
+        color="gray.700"
         fontSize="2.25rem">
         Deals
       </Text>
+      <Box 
+      display="flex"
+      justifyContent="center">
+        <List>
+          {cards.map((currentCard, index) => {
+            return (
+              <Card
+                key={index}
+                previousValue={20}
+                value={2000}
+                discount={10}
+                description="hgasdf"
+              />
+            )
+          })}
+        </List>
+      </Box>
     </Box>
   )
 }
