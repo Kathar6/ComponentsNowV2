@@ -11,7 +11,6 @@ import { Navigate } from "react-router-dom";
 // Utils
 const checkAuth = () => {
   const expiration = localStorage.getItem("exp-time")
-  console.log(expiration)
   if (expiration) return "/home"
   else return "/login"
 }

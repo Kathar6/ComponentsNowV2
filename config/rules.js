@@ -1,7 +1,7 @@
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
 const reactRule = {
-  test: /\.[jt]sx?$/,
+  test: /\.(t|j)sx?$/,
   exclude: /node_modules/,
   loader: 'babel-loader',
   options: {
@@ -11,7 +11,8 @@ const reactRule = {
         '@babel/preset-react',
         {
           runtime: 'automatic'
-        }
+        },
+        '@babel/preset-typescript'
       ]
     ]
   }

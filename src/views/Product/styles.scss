@@ -1,0 +1,22 @@
+
+.product-main-block {
+  justify-content: center;
+}
+
+.product-title {
+  font-size: var(--chakra-fontSizes-5xl);
+  color: var(--chakra-colors-gray-700);
+  font-weight: bolder;
+}
+
+.product-price {
+  font-size: var(--chakra-fontSizes-7xl);
+  color: var(--chakra-colors-primary-500);
+}
+
+.product-discount {
+  align-self: center;
+  text-decoration: line-through;
+  color: #B8B8B8;
+  font-size: var(--chakra-fontSizes-5xl);
+}

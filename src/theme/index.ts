@@ -23,7 +23,7 @@ const theme = extendTheme(
       body: `'Raleway', sans-serif`
     },
     styles: {
-      global: props => ({
+      global: (props:any) => ({
         body: {
           bg: mode("#fafafa", "#020517")(props)
         }

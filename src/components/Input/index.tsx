@@ -1,51 +1,32 @@
-import { useMemo } from 'react'
+import { ClassAttributes, Fragment, HTMLInputTypeAttribute, InputHTMLAttributes, useMemo } from 'react'
 
 // Components
 import Input from './Input'
 import Password from './Password'
-
-// Vendor
-import { useField } from 'formik'
-
-import {
-  FormLabel,
-  FormControl,
-  FormErrorMessage
-} from '@chakra-ui/react'
+import Number from "./Number"
+import FormInput from './FormInput'
 
 // Types
-import type { FC } from 'react'
-import type { FieldHookConfig } from 'formik'
+import { IInputTypes } from "./types"
 
-type CurrentType = "text" | "password"
-
-type CustomProps = {
-  label: string,
-  type: CurrentType
-}
-
-interface InputType {
-  text: JSX.Element,
-  password: JSX.Element
-}
 // {label, type, ...props}
-const CustomInput: FC<FieldHookConfig<string> & CustomProps> = ({label, type, ...props}) => {
-  const currentType: CurrentType = type || "text"
+const CustomInput = (props: InputHTMLAttributes<HTMLInputElement> & any) => {
+  const currentType: HTMLInputTypeAttribute = props?.type || "text"
 
-  const [field, meta] = useField(props)
-
-  const id = useMemo(() => `${props.id ? `${props.id}-` : ""}${props.name}`, [])
-
-  const inputTypeHandler: InputType = {
-    text: <Input id={id} {...field} />,
-    password: <Password id={id} {...field} />
+  const inputTypeHandler: IInputTypes = {
+    text: (field: any) => <Input {...field} {...props} />,
+    password: (field: any) => <Password {...field} {...props} />,
+    number: (field: any) => <Number {...field} {...props} />
   }
+  
+  if (props.name) {
+    return <FormInput label={props.label} props={props} getInput={inputTypeHandler[currentType as keyof IInputTypes]}/>
+  }
+
   return (
-    <FormControl isInvalid={meta.touched && !!meta.error}>
-      <FormLabel htmlFor={id} fontSize="1rem">{label}</FormLabel>
-      {inputTypeHandler[currentType]}
-      <FormErrorMessage maxW="inherit">{meta.error}</FormErrorMessage>
-    </FormControl>
+    <Fragment>
+      {inputTypeHandler[currentType as keyof IInputTypes]()}
+    </Fragment>
   )
 }
 

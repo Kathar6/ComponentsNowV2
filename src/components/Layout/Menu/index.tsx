@@ -27,12 +27,12 @@ const Menu = () => {
   const navigate = useNavigate()
 
   return (
-    <Box maxW="100vw">
+    <Box>
       <Navbar>
         <Image src={logo} w="4.188rem" h="fit-content"/>
 
         <Box 
-          minW="80%" 
+          w="80%" 
           mx="0.938rem" 
           display="flex"
           alignItems="center"

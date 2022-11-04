@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { InputHTMLAttributes, useMemo, useState } from "react"
 
 // Assets
 import { Icon } from "@iconify/react"
@@ -12,16 +12,18 @@ import {
   InputRightAddon
 } from "@chakra-ui/react"
 
-// Types
-import type { InputProps } from "@chakra-ui/react"
-
-const Password = (props: InputProps) => {
+const Password = (props: InputHTMLAttributes<HTMLInputElement>) => {
 
   const [show, setShow] = useState(false)
   
+  const inputProps = useMemo(() => ({
+    ...props,
+    type: undefined
+  }), [show])
+
   return (
     <InputGroup>
-      <Input {...props} type={show ? "text" : "password"} />
+      <Input {...props} type={show ? 'text' : 'password'} />
       <InputRightAddon 
         py="0.625rem" 
         h="fit-content" 

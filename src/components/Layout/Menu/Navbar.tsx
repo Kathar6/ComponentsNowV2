@@ -5,7 +5,7 @@ const Navbar = styled.nav`
   max-width: 100vw;
   height: 5rem;
   display: flex;
-  padding-left: 1rem;
+  padding: 0 1rem;
   flex-direction: row;
   align-items: center !important;
   background-color: var(--chakra-colors-primary-500);

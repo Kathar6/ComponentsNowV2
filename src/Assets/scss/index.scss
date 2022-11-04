@@ -2,8 +2,12 @@
   width: 0.625rem;
   height: 0.625rem;
   border-radius: 10px;
-  background: #d8d8d8;
+  background-color: transparent;
   padding: 1px;
+
+  &:hover {
+    background-color: #d8d8d8;
+  }
 }
 
 #app div::-webkit-scrollbar-thumb {

@@ -14,7 +14,7 @@ import "./style.scss"
 
 // Components
 import TipList from "@src/components/TipList"
-import { List, Card } from "@src/components/ProductCardList"
+import { List, ListItem } from "@src/components/ProductItemList"
 
 // Vendor
 import { Icon } from "@iconify/react"
@@ -27,7 +27,8 @@ import {
 } from "@chakra-ui/react"
 
 const Home = (): JSX.Element => {
-
+  
+  const navigate = useNavigate()
   const [cards, setCards] = useState(new Array(8).fill(""))
 
   return (
@@ -73,12 +74,13 @@ const Home = (): JSX.Element => {
         <List>
           {cards.map((currentCard, index) => {
             return (
-              <Card
+              <ListItem
                 key={index}
                 previousValue={20}
                 value={2000}
                 discount={10}
                 description="hgasdf"
+                onClick={() => navigate('/product/1')}
               />
             )
           })}
