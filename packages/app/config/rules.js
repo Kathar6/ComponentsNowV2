@@ -1,21 +1,36 @@
-const isDevelopment = process.env.NODE_ENV !== 'production';
+const isDevelopment = process.env.WEBPACK_SERVE === 'development';
 
-const reactRule = {
-  test: /\.(t|j)sx?$/,
-  exclude: /node_modules/,
-  loader: 'babel-loader',
-  options: {
-    plugins: [isDevelopment && require.resolve('react-refresh/babel')].filter(Boolean),
-    presets: [
-      [
-        '@babel/preset-react',
-        {
-          runtime: 'automatic'
-        },
-        '@babel/preset-typescript'
-      ]
-    ]
-  }
+const mainRule = {
+  oneOf: [
+    {
+      test: /\.[jt]s$/,
+      include: /src/,
+      exclude: /node_modules/,
+      use: {
+        loader: 'babel-loader'
+      },
+    },
+    {
+      test: /\.[jt]sx?$/,
+      include: /src/,
+      exclude: [/node_modules/],
+      use: {
+        loader: 'babel-loader',
+        options: {
+          // Your Babel config here
+          presets: [
+            [
+              '@babel/preset-react', 
+              {runtime: 'automatic'}
+            ],
+            '@babel/preset-env', 
+            '@babel/preset-typescript'
+          ],
+          plugins: [isDevelopment && 'react-refresh/babel'].filter(Boolean)
+        }
+      }
+    }
+  ]
 }
 
 const svgRule = {
@@ -47,7 +62,7 @@ const assetsRule = {
 }
 
 const rules = [
-  reactRule,
+  mainRule,
   cssRule,
   sassRule,
   svgRule,
